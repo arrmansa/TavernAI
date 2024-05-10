@@ -34,7 +34,7 @@ export var pyg_fmtg = 2;
 export var style_anchor = false;
 export var character_anchor = false;
 export const gap_holder = 120;
-export var online_status = 'no_connection';
+export var online_status = 'bypass_no_connection';
 var chat_name;
 const VERSION = '1.5.4';
 var openai_image_input = '';
@@ -889,7 +889,7 @@ $(document).ready(function(){
                 success: function(data){
                     online_status = data.result;
                     if(online_status == undefined){
-                        online_status = 'no_connection';
+                        online_status = 'bypass_no_connection';
                     }
                     setPygFmtg();
                     //console.log(online_status);
@@ -901,13 +901,13 @@ $(document).ready(function(){
                 error: function (jqXHR, exception) {
                     console.log(exception);
                     console.log(jqXHR);
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     resultCheckStatus();
                 }
             });
         }else{
             if(is_get_status_novel != true && is_get_status_openai != true && is_get_status_webui != true && is_get_status_claude != true){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }
@@ -945,7 +945,7 @@ $(document).ready(function(){
                     online_status = data.model_name;
                     
                     if(online_status == undefined){
-                        online_status = 'no_connection';
+                        online_status = 'bypass_no_connection';
                     }
                     setPygFmtg();
                     //console.log(online_status);
@@ -957,13 +957,13 @@ $(document).ready(function(){
                 error: function (jqXHR, exception) {
                     console.log(exception);
                     console.log(jqXHR);
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     resultCheckStatusWebui();
                 }
             });
         }else{
             if(is_get_status_novel != true && is_get_status_openai != true && is_get_status != true && is_get_status_claude != true){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }
@@ -1012,7 +1012,7 @@ $(document).ready(function(){
                 },
                 error: function (jqXHR, exception) {
                     document.getElementById("hordeQueue").innerHTML = "Unable to connect to Kobold Horde.";
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     $('#horde_model_select').empty();
                     $('#horde_model_select').append($('<option></option>').val('').html('-- Connect to Horde for models --'));
                     console.log(exception);
@@ -1022,7 +1022,7 @@ $(document).ready(function(){
             });
         }else{
             if(!is_get_status_novel && !is_get_status_webui && !is_get_status_claude && !is_get_status_openai){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }
@@ -3954,7 +3954,7 @@ $(document).ready(function(){
         is_get_status_openai = false;
         is_get_status_webui = false;
         is_get_status_claude = false;
-        online_status = 'no_connection';
+        online_status = 'bypass_no_connection';
         checkOnlineStatus();
         changeMainAPI();
         saveSettings();
@@ -6002,7 +6002,7 @@ $(document).ready(function(){
                         //const getData = await response.json();
                         novel_tier = data.tier;
                         if(novel_tier == undefined){
-                            online_status = 'no_connection';
+                            online_status = 'bypass_no_connection';
                         }
                         if(novel_tier === 0){
                             online_status = "Paper";
@@ -6026,7 +6026,7 @@ $(document).ready(function(){
                     }
                 },
                 error: function (jqXHR, exception) {
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     console.log(exception);
                     console.log(jqXHR);
                     resultCheckStatusNovel();
@@ -6034,7 +6034,7 @@ $(document).ready(function(){
             });
         }else{
             if(!is_get_status && !is_get_status_openai && !is_get_status_claude && !is_get_status_webui){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }
@@ -6237,7 +6237,7 @@ $(document).ready(function(){
                 success: function(data){
                     online_status = data;
                     if(data == undefined || data.error == true){
-                        online_status = 'no_connection';
+                        online_status = 'bypass_no_connection';
                         callPopup(data.error_message, 'alert_error');
                     }else{
                         online_status = 'Connected';
@@ -6285,14 +6285,14 @@ $(document).ready(function(){
                 error: function (jqXHR, exception) {
                     console.log(exception);
                     console.log(jqXHR);
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     callPopup(exception, 'alert_error');
                     resultCheckStatusOpen();
                 }
             });
         }else{
             if(!is_get_status_novel && !is_get_status && !is_get_status_webui && !is_get_status_claude){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }
@@ -6385,7 +6385,7 @@ $(document).ready(function(){
                 success: function(data){
                     online_status = data;
                     if(data == undefined || data.error == true){
-                        online_status = 'no_connection';
+                        online_status = 'bypass_no_connection';
                         callPopup(data.error_message, 'alert_error');
                     }else{
                         online_status = 'Connected';
@@ -6400,14 +6400,14 @@ $(document).ready(function(){
                 error: function (jqXHR, exception) {
                     console.log(exception);
                     console.log(jqXHR);
-                    online_status = 'no_connection';
+                    online_status = 'bypass_no_connection';
                     callPopup(exception, 'alert_error');
                     resultCheckStatusClaude();
                 }
             });
         }else{
             if(!is_get_status_novel && !is_get_status && !is_get_status_webui && !is_get_status_openai){
-                online_status = 'no_connection';
+                online_status = 'bypass_no_connection';
             }
         }
     }

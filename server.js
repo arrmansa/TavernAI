@@ -627,10 +627,10 @@ app.post("/getstatus", jsonParser, function(request, response_getstatus = respon
                 
                 //response_getstatus.send(data.result);
             }else{
-                data.result = "no_connection";
+                data.result = "bypass_no_connection";
             }
         }else{
-            data.result = "no_connection";
+            data.result = "bypass_no_connection";
         }
         response_getstatus.send(data);
         //console.log(response.statusCode);
@@ -657,10 +657,10 @@ app.post("/getstatus_webui", jsonParser, function(request, response_getstatus){
             if(data.result != "ReadOnly"){
                 //response_getstatus.send(data.result);
             }else{
-                data.result = "no_connection";
+                data.result = "bypass_no_connection";
             }
         }else{
-            data.result = "no_connection";
+            data.result = "bypass_no_connection";
         }
         response_getstatus.send(data);
         //console.log(response.statusCode);
